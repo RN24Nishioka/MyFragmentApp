@@ -1,1 +1,2 @@
 # MyFragmentApp
+学習したFragment機能を使って画面遷移をするアプリを作成。

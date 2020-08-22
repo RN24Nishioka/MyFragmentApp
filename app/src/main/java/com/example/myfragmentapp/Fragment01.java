@@ -79,7 +79,7 @@ public class Fragment01 extends Fragment {
                     fragmentTransaction.addToBackStack(null);
                     text = editText.getText().toString();
 
-                    fragmentTransaction.replace(R.id.container, Fragment02.newInstance(text));
+                    fragmentTransaction.replace(R.id.container, Fragment02.newInstance(text, mActivity));
                     fragmentTransaction.commit();
 
                     editText.getText().clear();

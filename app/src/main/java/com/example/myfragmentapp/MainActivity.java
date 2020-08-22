@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Fragment01 mFragment01;
 
 
     @Override
@@ -22,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
         final EditText editText = findViewById(R.id.editText);
         //MainActivityのeditTextを入手
         Fragment01 fragment01 = new Fragment01(this);
+        Fragment02 fragment02 = new Fragment02(this);
+        Fragment02 fragment03 = new Fragment02(this);
         Button buttonA = findViewById(R.id.buttonA);
         Button buttonB = findViewById(R.id.buttonB);
         Button buttonC = findViewById(R.id.buttonC);
 
 
-
-
-        final String[] text = new String[1];
+        final String[] text;
+        text = new String[1];
 
         if (savedInstanceState == null) {
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     text[0] = editText.getText().toString();
 
 
-                    fragmentTransaction2.replace(R.id.container, Fragment02.newInstance(text[0]));
+                    fragmentTransaction2.replace(R.id.container, Fragment02.newInstance(text[0], MainActivity.this));
                     fragmentTransaction2.commit();
 
                     editText.getText().clear();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     text[0] = editText.getText().toString();
 
 
-                    fragmentTransaction3.replace(R.id.container, Fragment03.newInstance(text[0]));
+                    fragmentTransaction3.replace(R.id.container, Fragment03.newInstance(text[0], MainActivity.this));
                     fragmentTransaction3.commit();
 
                     editText.getText().clear();

@@ -14,15 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class Fragment01 extends Fragment {
+public class Fragment02 extends Fragment {
 
     private String text;
 
 
-    public static Fragment01 newInstance(String text) {
-        Fragment01 fragment = new Fragment01();
+
+    public static Fragment02 newInstance(String text) {
+        Fragment02 fragment = new Fragment02();
         Bundle args = new Bundle();
-        args.putString("Aは", text);
+        args.putString("Bは", text);
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,7 +32,7 @@ public class Fragment01 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_01, container, false);
+        return inflater.inflate(R.layout.fragment_02, container, false);
     }
 
     @Override
@@ -41,8 +42,8 @@ public class Fragment01 extends Fragment {
         Bundle args = getArguments();
 
         if(args != null){
-            String text = args.getString("Aは");
-            String str = "Aは: "+ text;
+            String text = args.getString("Bは");
+            String str = "Bは: "+ text;
 
             TextView textView = view.findViewById(R.id.textA);
             textView.setText(str);

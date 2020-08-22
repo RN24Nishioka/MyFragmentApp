@@ -1,5 +1,6 @@
 package com.example.myfragmentapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,15 +12,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Fragment01 mFragment01;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final EditText editText = findViewById(R.id.editText);
+        //MainActivityのeditTextを入手
+        Fragment01 fragment01 = new Fragment01(this);
         Button buttonA = findViewById(R.id.buttonA);
         Button buttonB = findViewById(R.id.buttonB);
         Button buttonC = findViewById(R.id.buttonC);
+
+
 
 
         final String[] text = new String[1];
@@ -78,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     editText.getText().clear();
                 }
             });
+
 
 
         }

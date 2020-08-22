@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
                     text[0] = editText.getText().toString();
 
-                    fragmentTransaction.replace(R.id.container, Fragment01.newInstance(text[0]));
+                    fragmentTransaction.replace(R.id.container, Fragment01.newInstance(text[0], MainActivity.this));
                     fragmentTransaction.commit();
 
                     editText.getText().clear();

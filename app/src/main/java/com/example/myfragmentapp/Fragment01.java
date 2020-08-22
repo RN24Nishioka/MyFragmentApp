@@ -33,8 +33,8 @@ public class Fragment01 extends Fragment {
     }
 
 
-    public static Fragment01 newInstance(String text) {
-        Fragment01 fragment = new Fragment01();
+    public static Fragment01 newInstance(String text, Activity activity) {
+        Fragment01 fragment = new Fragment01(activity);
         Bundle args = new Bundle();
         args.putString("Aは", text);
         fragment.setArguments(args);

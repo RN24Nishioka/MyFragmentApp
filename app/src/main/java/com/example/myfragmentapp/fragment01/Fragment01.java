@@ -1,7 +1,6 @@
-package com.example.myfragmentapp;
+package com.example.myfragmentapp.fragment01;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,11 +16,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.myfragmentapp.Fragment02;
+import com.example.myfragmentapp.R;
+
 
 public class Fragment01 extends Fragment {
 
+
     private String text;
     private Activity mActivity;
+
 
     //MainActivityのeditTextを入手
     public Fragment01(Activity activity){
@@ -70,6 +74,9 @@ public class Fragment01 extends Fragment {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 //MainActivityのeditTextを入手
                 final EditText editText = mActivity.findViewById(R.id.editText);
                 FragmentManager fragmentManager = getFragmentManager();
@@ -92,6 +99,7 @@ public class Fragment01 extends Fragment {
 
             @Override
             public void onClick(View v) {
+
                 FragmentManager fragmentManager = getFragmentManager();
                 if(fragmentManager != null){
                     fragmentManager.popBackStack();

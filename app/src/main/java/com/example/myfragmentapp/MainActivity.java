@@ -1,16 +1,29 @@
 package com.example.myfragmentapp;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.myfragmentapp.fragment01.Fragment01;
+import com.example.myfragmentapp.fragment01.Fragment01Model;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static final String STATE_MODEL = "STATE_MODEL";
+    private Fragment01Model mModel = new Fragment01Model(this);
+    //MainActivityのeditTextを入手
+    Fragment01 fragment01 = new Fragment01(this);
+    Fragment02 fragment02 = new Fragment02(this);
+    Fragment02 fragment03 = new Fragment02(this);
+    int ABC;
+
 
 
 
@@ -18,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("MVCに書き換え中");
+
         final EditText editText = findViewById(R.id.editText);
-        //MainActivityのeditTextを入手
-        Fragment01 fragment01 = new Fragment01(this);
-        Fragment02 fragment02 = new Fragment02(this);
-        Fragment02 fragment03 = new Fragment02(this);
         Button buttonA = findViewById(R.id.buttonA);
         Button buttonB = findViewById(R.id.buttonB);
         Button buttonC = findViewById(R.id.buttonC);
@@ -37,52 +50,26 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    mModel.clickNextButton(text, editText, fragmentManager, 1);
 
-                    fragmentTransaction.addToBackStack(null);
-
-                    text[0] = editText.getText().toString();
-
-                    fragmentTransaction.replace(R.id.container, Fragment01.newInstance(text[0], MainActivity.this));
-                    fragmentTransaction.commit();
-
-                    editText.getText().clear();
                 }
             });
 
             buttonB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragmentManager fragmentManager2 = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    mModel.clickNextButton(text, editText, fragmentManager, 2);
 
-                    fragmentTransaction2.addToBackStack(null);
-
-                    text[0] = editText.getText().toString();
-
-
-                    fragmentTransaction2.replace(R.id.container, Fragment02.newInstance(text[0], MainActivity.this));
-                    fragmentTransaction2.commit();
-
-                    editText.getText().clear();
                 }
             });
 
             buttonC.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragmentManager fragmentManager3 = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    mModel.clickNextButton(text, editText, fragmentManager, 3);
 
-                    fragmentTransaction3.addToBackStack(null);
-
-                    text[0] = editText.getText().toString();
-
-
-                    fragmentTransaction3.replace(R.id.container, Fragment03.newInstance(text[0], MainActivity.this));
-                    fragmentTransaction3.commit();
-
-                    editText.getText().clear();
                 }
             });
 
